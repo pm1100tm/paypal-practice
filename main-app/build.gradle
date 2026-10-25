@@ -1,0 +1,60 @@
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version '4.0.1'
+  id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.swd'
+version = project.hasProperty('APP_VERS') ? project.APP_VERS : 'snapshot'
+description = 'ShopSWD Guest Purchase (Cart → Checkout → PayPal)'
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(25) // Sync with .sdkmanrc
+  }
+}
+
+configurations {
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  // Spring Boot Core & Web
+  implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+  // Data Persistence (JPA)
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  runtimeOnly 'com.mysql:mysql-connector-j'
+
+  // Document
+  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1'
+
+  // Development Tools
+  annotationProcessor 'org.projectlombok:lombok'
+  compileOnly 'org.projectlombok:lombok'
+
+  // Test
+  testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+  testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+  testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.1'
+  testRuntimeOnly 'com.h2database:h2' // 테스트 전용 인메모리 DB (profile: test)
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+// 실행 가능한 bootJar 하나만 생성 (plain jar 비활성화)
+tasks.named('jar') {
+  enabled = false
+}
+
+tasks.named('test') {
+  useJUnitPlatform()
+  jvmArgs '-Xshare:off' // mute sharing boot loader
+}

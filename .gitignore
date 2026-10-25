@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Node (frontend)
+node_modules/
+dist/
+.next/
+.nuxt/
+coverage/
+
+# Java / Kotlin (backend)
+build/
+/main-app/out/
+/main-mobile/out/
+target/
+.gradle/
+*.class
+
+# Python (backend)
+__pycache__/
+*.pyc
+.venv/
+venv/

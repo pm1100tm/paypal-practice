@@ -1,0 +1,47 @@
+{
+  "name": "sk-main-mobile-v1",
+  "description": "FSD(Feature-Sliced Design) Next.js app — guest Cart → Checkout → PayPal",
+  "version": "0.0.0-snapshot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "steiger": "steiger ./src",
+    "format": "prettier 'src/**/*.{ts,tsx,css}' --write",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "5.2.2",
+    "@paypal/react-paypal-js": "8.9.2",
+    "@tanstack/react-query": "5.90.12",
+    "clsx": "2.1.1",
+    "next": "16.2.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-hook-form": "7.69.0",
+    "tailwind-merge": "3.4.0",
+    "zod": "4.2.1"
+  },
+  "devDependencies": {
+    "@feature-sliced/steiger-plugin": "0.5.7",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.1",
+    "@testing-library/dom": "10.4.1",
+    "@types/node": "20.19.27",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "4.7.0",
+    "autoprefixer": "10.4.23",
+    "jsdom": "25.0.1",
+    "postcss": "8.5.14",
+    "prettier": "3.7.4",
+    "steiger": "0.5.11",
+    "tailwindcss": "3.4.19",
+    "typescript": "5.9.3",
+    "vite-tsconfig-paths": "4.3.2",
+    "vitest": "4.0.18"
+  }
+}
